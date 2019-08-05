@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="pt-br">
+	<title>Cálculo Bhaskara</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body {
+			background: red;
+		}
+		input#v1, input#v2, input#v3 {
+			width: 30px;
+		}
+		fieldset {
+			color:rgb(63, 54, 54);
+			width: 300px;
+			text-align: center;
+			margin: auto;
+			background: rgb(165, 209, 226);
+			border: 3px solid black;		
+		}
+		fieldset p {
+			color: black;
+		}
+		fieldset legend {
+			font-weight: bold;
+		}
+		div#res {
+			font: normal 20pt Arial;
+			margin-top: 100px;
+			font-weight: bold;
+			color: rgb(92, 33, 33);  
+		}
+		div#programa {
+			width:  600px;
+			margin: auto;
+			text-align: center;
+			background: greenyellow;
+			height: 500px;
+			box-shadow: 5px 5px 5px 5px  black;
+		}
+		h1 {
+			font: normal 20pt Arial;
+			font-weight: bold;
+			background: blueviolet;
+			border: 3px solid black;
+		}
+	</style>
+</head>
+<body>
+	<div id = "programa">
+	<h1>Calculando Bháskara</h1>
+	<fieldset>
+		<legend>Insira os valores a,b e c.</legend>
+	<p><input type="number" name="v1" placeholder="a" id="v1">x² + <input type="number" name="v2" placeholder="b" id="v2">x + <input type="number" name="v3" placeholder="c" id="v3"> </p>
+	<input type="button" id="enter" value="Calcular" onclick='calcular()'>
+	</fieldset>
+	<div id="res"><p> >>>Resposta<<< </p></div>
+
+	<script type="text/javascript">
+		function calcular() {
+			var a = window.document.querySelector('input#v1')
+			var b = window.document.querySelector('input#v2')
+			var c = window.document.querySelector('input#v3')
+			var res = window.document.querySelector('div#res')
+			var valora= Number(a.value)
+			var valorb= Number(b.value)
+			var valorc= Number(c.value)
+			var calculo = valorb ** 2 - 4 *valora*valorc
+			var raiz1 = - valorb + (calculo ** (1/2)) / 2 * valora
+			var raiz2 = - valorb - (calculo ** (1/2)) / 2 * valora
+			if (calculo >= 0) {
+				res.innerHTML = `<p>O valor de delta é <strong>${calculo}</strong></p>`
+				res.innerHTML += `<p>As raízes são: <br /> <strong>x' = ${raiz1}</strong> <br /> <strong>x" = ${raiz2}</strong></p>`
+			} else {
+				res.innerHTML= `<p>O valor de delta é <strong>${calculo}</strong></p>`
+				res.innerHTML += `<p style='color: red'>NÃO SERÁ POSSÍVEL CALCULAR RAIZES NEGATIVAS</p>`
+			}
+			
+		}
+	</script>
+	</div>
+</body>
+</html>
